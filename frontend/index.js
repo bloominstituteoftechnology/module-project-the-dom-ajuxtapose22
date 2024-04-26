@@ -85,18 +85,40 @@ const id = setInterval(() => {
 
   // 👉 TASK 5 - Build a "Friends" widget
   //  ✨ add your code here
-const randomPerson = people[Math.floor(Math.random()* people.length)];
+const person = people[Math.floor(Math.random()* people.length)];
 const personParagraph = document.createElement('p');
-const friendP = document.querySelector('.friends').appendChild(personParagraph);
+document.querySelector('.friends').appendChild(personParagraph);
 
-const firstName = randomPerson.fname;
-const birthdate = randomPerson.dateOfBirth;
+const birthdate = person.dateOfBirth;
 const birthInfoSplit = birthdate.split("-");
 const birthYear = birthInfoSplit[0];
-const friendList = randomPerson.friends;
+const friendList = person.friends;
 
-const personText = `${firstName} was born in ${birthYear} and ${friendList}.`
-personParagraph.textContent = personText;
+let sentenceFriend =  `${person.fname} ${person.lname} was born in ${birthYear} and `
+
+if (!person.friends.length){
+  sentenceFriend += 'has no friends.';
+} else {
+  sentenceFriend += `is friends with `
+   for (let idx = 0; idx < person.friends.length; idx++){
+    const friendId = person.friends[idx];
+    const friend = people.find(p => p.id === friendId);
+    const fullName = `${friend.fname} ${friend.lname}`;
+
+    let lastIdx = idx === person.friends.length - 1;
+    let nextToLastIdx = idx === person.friends.length - 2;
+    if (lastIdx){
+      sentenceFriend += `${fullName}.`
+    } else if (nextToLastIdx) {
+      sentenceFriend += `${fullName} and `
+    } else {
+      sentenceFriend += `${fullName}, `
+    }
+  }
+}
+personParagraph.textContent = sentenceFriend;
+
+
 
   // 👉 TASK 6 - Make it so user can tab through the widgets
   //  ✨ add your code here
