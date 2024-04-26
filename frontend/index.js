@@ -66,23 +66,37 @@ sentence.appendChild(paragraph)
 const countdownWidget = document.querySelector('.countdown');
 let count = 5;
 const countdown = document.createElement('p');
+
 countdown.textContent = `T-minus ${count}...`;
 countdownWidget.appendChild(countdown);
 
 
-setInterval(() => {
+const id = setInterval(() => {
   if (count === 1){
     countdown.textContent = `Liftoff! 🚀`;
+    clearInterval(id);
   } else {
   count--
   countdown.textContent = `T-minus ${count}...`;
   }
 }, 1000)
 
-clearInterval()
+
 
   // 👉 TASK 5 - Build a "Friends" widget
   //  ✨ add your code here
+const randomPerson = people[Math.floor(Math.random()* people.length)];
+const personParagraph = document.createElement('p');
+const friendP = document.querySelector('.friends').appendChild(personParagraph);
+
+const firstName = randomPerson.fname;
+const birthdate = randomPerson.dateOfBirth;
+const birthInfoSplit = birthdate.split("-");
+const birthYear = birthInfoSplit[0];
+const friendList = randomPerson.friends;
+
+const personText = `${firstName} was born in ${birthYear} and ${friendList}.`
+personParagraph.textContent = personText;
 
   // 👉 TASK 6 - Make it so user can tab through the widgets
   //  ✨ add your code here
