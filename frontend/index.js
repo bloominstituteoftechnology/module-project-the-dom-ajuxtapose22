@@ -51,9 +51,6 @@ authorDateDiv.appendChild(authorDate);
 // Random Verb2
   const randomVerb2 = Math.floor(Math.random() * verbs.length);
   const verb2 = verbs[randomVerb2];
-
-   
-
 // new element
 const paragraph = document.createElement("p");
 const mumboJumbo = `We need to ${verb1} our ${noun1} ${adverb1} 
@@ -66,6 +63,23 @@ sentence.appendChild(paragraph)
 
   // 👉 TASK 4 - Build a "Countdown" widget
   //  ✨ add your code here
+const countdownWidget = document.querySelector('.countdown');
+let count = 5;
+const countdown = document.createElement('p');
+countdown.textContent = `T-minus ${count}...`;
+countdownWidget.appendChild(countdown);
+
+
+setInterval(() => {
+  if (count === 1){
+    countdown.textContent = `Liftoff! 🚀`;
+  } else {
+  count--
+  countdown.textContent = `T-minus ${count}...`;
+  }
+}, 1000)
+
+clearInterval()
 
   // 👉 TASK 5 - Build a "Friends" widget
   //  ✨ add your code here
