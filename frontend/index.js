@@ -8,8 +8,9 @@ function moduleProject1() {
   // 👉 TASK 1 - Add a "widget" class name to widgets so CSS kicks in
   //  ✨ add your code here
     const widgets = document.querySelectorAll("div");
-      widgets.forEach(widget => {
-      widget.classList.add("widget"); 
+      widgets.forEach((widget, i) => {
+      widget.classList.add("widget");
+      widget.setAttribute('tabindex', i + 1)
     })
     
   // 👉 TASK 2 - Build a "Quote of the Day" widget
@@ -120,10 +121,11 @@ personParagraph.textContent = sentenceFriend;
 
 
 
-  // 👉 TASK 6 - Make it so user can tab through the widgets
-  //  ✨ add your code here
+// 👉 TASK 6 - Make it so user can tab through the widgets
+//  ✨ add your code here
+// ADDED CODE TO TASK 1 WIDGET
 
-  // 👆 WORK WORK ABOVE THIS LINE 👆
+;  // 👆 WORK WORK ABOVE THIS LINE 👆
 }
 
 // ❗ DO NOT WORK BELOW THIS LINE
